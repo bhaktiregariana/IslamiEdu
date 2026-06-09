@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Belajar - IslamiEdu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Geist', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 flex flex-col min-h-screen antialiased">
+
+    <!-- Header / Navbar -->
+    <nav class="bg-slate-950 border-b border-slate-900 sticky top-0 z-50 backdrop-blur-md bg-opacity-80">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between h-16">
+                <span class="text-lg font-bold tracking-tight text-white flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400"></span> IslamiEdu
+                </span>
+                <div class="flex gap-1 text-sm">
+                    <a href="index.html" class="px-3 py-2 rounded-lg text-slate-400 hover:text-white transition">Beranda</a>
+                    <a href="materi.html" class="px-3 py-2 rounded-lg text-cyan-400 bg-slate-900 font-medium">Modul Belajar</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Konten Utama -->
+    <div class="flex-1 max-w-5xl w-full mx-auto px-4 py-8 flex flex-col md:flex-row gap-10">
+        
+        <!-- Sidebar Kiri: Daftar Materi -->
+        <aside class="w-full md:w-72 flex flex-col gap-6 shrink-0">
+            <!-- Progress Belajar Kategori Biasa -->
+            <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-900">
+                <div class="flex justify-between text-xs text-slate-400 mb-2">
+                    <span class="font-medium">Progres Membaca</span>
+                    <span id="progress-percent" class="text-cyan-400 font-semibold">0%</span>
+                </div>
+                <div class="w-full bg-slate-950 rounded-full h-1.5">
+                    <div id="progress-bar" class="bg-cyan-400 h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                </div>
+                <p id="progress-text" class="text-[11px] text-slate-500 mt-1.5">0 dari 0 materi selesai</p>
+            </div>
+
+            <!-- Menu Navigasi Bab -->
+            <div class="flex flex-col gap-4" id="sidebar-modul">
+                <!-- Konten dinamis dari JavaScript akan masuk ke sini -->
+            </div>
+        </aside>
+
+        <!-- Area Bacaan Kanan -->
+        <main class="flex-1 min-w-0">
+            <div id="box-konten" class="bg-slate-900/30 border border-slate-900/60 p-6 md:p-8 rounded-2xl transition-all">
+                <article id="konten-materi" class="prose prose-invert max-w-none">
+                    <h1 class="text-2xl font-bold text-white mb-3">Selamat Datang di Modul Belajar</h1>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Silakan pilih salah satu topik pembelajaran yang tersedia di menu sebelah kiri untuk mulai membaca materi, penjelasan, beserta dalil pendukungnya.</p>
+                    
+                    <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-400 flex items-start gap-3">
+                        <span class="text-cyan-400 mt-0.5">💡</span>
+                        <p>Sistem akan menyimpan progres membaca kamu secara otomatis selama halaman ini dibuka. Selamat belajar!</p>
+                    </div>
+                </article>
+                
+                <!-- Tombol Selesai Membaca -->
+                <div id="action-area" class="mt-8 pt-6 border-t border-slate-900 hidden flex justify-end">
+                    <button id="btn-selesai" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-semibold px-5 py-2.5 rounded-lg shadow-sm transition-all flex items-center gap-2">
+                        Selesai Membaca Topik Ini
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer Standar -->
+    <footer class="border-t border-slate-900 bg-slate-950 py-6 mt-auto">
+        <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+            <p>&copy; 2026 IslamiEdu Portal.</p>
+            <p>Dikembangkan oleh <span class="text-slate-400 font-medium">Bhakti Rega Riana</span></p>
+        </div>
+    </footer>
+
+   <!-- Script Arsitektur Materi Komprehensif Pertemuan 1-16 -->
+    <script>
+        const modulBelajar = [
+            {
+                namaModul: "Epistemologi & Urgensi Ilmu",
+                topik: [
+                    {
+                        id: "m1-t1",
+                        judul: "Kewajiban Menuntut Ilmu & Tradisi Literasi Islam",
+                        isi: `<h3 class="text-sm font-semibold text-cyan-400 mb-2">1. Fondasi Ontologis dan Teologis Ilmu</h3>
+                              <p class="text-slate-300 mb-4 text-xs leading-relaxed text-justify">Menuntut ilmu dalam ekosistem peradaban Islam bukan sekadar aktivitas sekuler untuk memenuhi kebutuhan pasar ekonomi atau industri. Secara ontologis, ilmu adalah representasi dari sifat Allah Swt. yaitu Al-'Alim, yang diturunkan kepada manusia sebagai amanah kekhalifahan demi mengelolah bumi. Hukum menuntut ilmu terbagi menjadi dua klasifikasi rigid yaitu Fardhu 'Ain (kewajiban individu) yang mencakup fundamental akidah, tata cara ibadah absah (fiqh al-ibadah), dan pembersihan jiwa (tazkiyatun nafs); serta Fardhu Kifayah yang mencakup rumpun sains kontemporer seperti kedokteran, teknik, ekonomi makro, dan teknologi informasi yang menopang eksistensi kemaslahatan publik.</p>
+                              
+                              <h3 class="text-sm font-semibold text-cyan-400 mb-2">2. Analisis Sanad dan Makna Hermeneutika Hadits</h3>
+                              <p class="text-slate-300 mb-4 text-xs leading-relaxed text-justify">Dalam tradisi keilmuan hadits, keotentikan teks dijaga melalui transmisi sanad yang ketat. Perintah menuntut ilmu ditegaskan melalui riwayat-riwayat tepercaya yang menggarisbawahi bahwa pencarian kebenaran merupakan prosesi sakral yang melibatkan seluruh entitas kosmik.</p>
+                              
+                              <div class="my-5 p-4 bg-slate-950/60 border-l-2 border-cyan-400 rounded-r-xl border-y border-r border-slate-900">
+                                  <p class="text-lg font-serif text-right text-slate-200 mb-2 leading-loose" dir="rtl">مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا سَهَّلَ اللَّهُ لَهُ بِهِ طَرِيقًا إِلَى الْجَنَّةِ</p>
+                                  <p class="text-[11px] text-slate-400 italic">"Barangsiapa menempuh jalan untuk mencari ilmu, maka Allah akan memudahkan baginya jalan menuju surga."</p>
+                                  <p class="text-[10px] text-cyan-400 font-medium mt-1">HR. Muslim (No. 2699)</p>
+                              </div>
+
+                              <h3 class="text-sm font-semibold text-cyan-400 mb-2">3. Implikasi Sosiologis & Dampak terhadap Peradaban Modern</h3>
+                              <p class="text-slate-300 mb-4 text-xs leading-relaxed text-justify">Ketika Eropa berada dalam masa kegelapan (Dark Ages), dunia Islam mengalami masa keemasan (Islamic Golden Age) yang dipicu oleh satu motivasi teologis: perintah membaca (Iqra') dan menuntut ilmu. Institusi universal pertama seperti Bayt al-Hikmah di Baghdad dan Universitas Al-Qarawiyyin di Maroko lahir dari rahim kesadaran beragama ini. Kontekstualisasi di era digital menuntut mahasiswa untuk mentransformasikan semangat pencarian ilmu ini ke dalam bentuk literasi digital yang kritis, etis, dan produktif guna menangkal disinformasi serta membangun kedaulatan iptek bangsa.</p>`
+                    },
+                    {
+                        id: "m1-t2",
+                        judul: "Epistemologi Bayani, Burhani, dan Irfani",
+                        isi: `<h3 class="text-sm font-semibold text-cyan-400 mb-2">1. Konstruksi Metodologi Berpikir Tradisi Islam</h3>
+                              <p class="text-slate-300 mb-4 text-xs leading-relaxed text-justify">Untuk memahami bobot ilmu secara menyeluruh, pemikir Muslim kontemporer mengklasifikasikan metodologi perolehan ilmu menjadi tiga pilar epistemologis utama. Pertama yaitu Bayani, sebuah pendekatan yang bersumber pada teks suci (nash) Al-Qur'an dan Sunnah menggunakan kaidah linguistik Arab yang rigid. Kedua yaitu Burhani, metodologi yang berbasis pada rasionalitas murni, logika silogisme (mantiq), eksperimen empiris, dan pembuktian saintifik objektif. Ketiga yaitu Irfani, pendekatan intuitif-spiritual melalui olah batin (kasyf) dan iluminasi langsung dari Allah bagi mereka yang telah membersihkan jiwanya dari noda maksiat.</p>
+                              
+                              <h3 class="text-sm font-semibold text-cyan-400 mb-2">2. Harmonisasi Antara Wahyu, Akal, dan Intuisi</h3>
+                              <p class="text-slate-300 mb-4 text-xs leading-relaxed text-justify">Krisis intelektual modern terjadi akibat adanya dikotomi radikal antara ilmu agama dan ilmu umum. Islam menolak sekularisasi ilmu tersebut. Ilmu burhani (sains) tanpa bimbingan bayani (wahyu) akan melahirkan teknologi destruktif yang mengeksploitasi alam tanpa moralitas. Sebaliknya, bayani tanpa burhani akan melahirkan kejutan dogmatis yang kaku dan tidak adaptif terhadap laju zaman. Integrasi ketiga pilar ini menghasilkan sarjana yang berotak modern namun berhati mekah.</p>`
+                    }
+                ]
+            },
+            {
+                namaModul: "Introspeksi & Manajemen Niat",
+                topik: [
+                    {
+                        id: "m2-t1",
+                        judul: "Dekonstruksi Ikhlas dan Fenomena Patologi Spiritual",
+                        isi: `<h3 class="text-sm font-semibold text-cyan-400 mb-2">1. Anatomi Niat dalam Perspektif Psikologi Hukum Islam</h3>
+                              <p class="text-slate-300 mb-4 text-xs leading-relaxed text-justify">Niat merupakan determinan utama yang mengubah nilai intrinsik suatu tindakan. Dalam kajian hukum syara', niat berfungsi sebagai pemisah (tamyiz) yang tegas antara perbuatan refleks alamiah (seperti makan demi kenyang) dengan perbuatan bernilai transendental (makan demi stamina beribadah). Secara psikologis, niat adalah visualisasi kehendak sadar yang memusatkan seluruh energi mental individu menuju satu titik capaian tertentu tanpa adanya distraksi eksternal.</p>
+                              
+                              <div class="my-5 p-4 bg-slate-950/60 border-l-2 border-cyan-400 rounded-r-xl border-y border-r border-slate-900">
+                                  <p class="text-lg font-serif text-right text-slate-200 mb-2 leading-loose" dir="rtl">إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى</p>
+                                  <p class="text-[11px] text-slate-400 italic">"Sesungguhnya setiap amalan tergantung pada niatnya. Dan setiap orang akan mendapatkan apa yang ia niatkan."</p>
+                                  <p class="text-[10px] text-cyan-400 font-medium mt-1">HR. Bukhari (No. 1) & Muslim (No. 1907)</p>
+                              </div>
+
+                              <h3 class="text-sm font-semibold text-cyan-400 mb-2">2. Bahaya Riya', Sum'ah, dan Narsisme Intelektual</h3>
+                              <p class="text-slate-300 mb-4 text-xs leading-relaxed text-justify">Patologi spiritual terbesar yang sering menjangkiti kaum akademisi dan penuntut ilmu adalah pencarian validitas ego di mata makhluk. Riya' (pamer visual), Sum'ah (pamer verbal), dan Ujub (keangkuhan intelektual) adalah penyakit emosional yang menghancurkan struktur pahala dari dalam. Di era media sosial, bahaya ini bermutasi menjadi narsisme digital, di mana pamer pencapaian akademis, gelar, dan status sosial kerap dibungkus dengan narasi religius palsu.</p>`
+                    }
+                ]
+            },
+            {
+                namaModul: "Etika Sosial & Keluhuran Akhlak",
+                topik: [
+                    {
+                        id: "m3-t1",
+                        judul: "Etika Keberadaban, Moralitas Sosial, dan Restorasi Karakter",
+                        isi: `<h3 class="text-sm font-semibold text-cyan-400 mb-2">1. Konstruksi Etika Kedirian dan Etika Sosial</h3>
+                              <p class="text-slate-300 mb-4 text-xs leading-relaxed text-justify">Akhlak bukan sekadar etiket permukaan atau tata krama artifisial yang dipraktikkan demi pencitraan sosial. Ibnu Miskawayh mendefinisikannya sebagai kondisi jiwa yang mapan, yang memicu tindakan spontan tanpa membutuhkan refleksi diskursif yang panjang. Karakter luhur berakar dari keseimbangan empat daya internal manusia: daya nalar (al-quwwah al-'aqliyyah), daya kontrol amarah (al-quwwah al-ghadhabiyyah), daya kelola syahwat (al-quwwah asy-syahwaniyyah), dan daya keadilan (al-quwwah al-'adlah).</p>
+                              
+                              <div class="my-5 p-4 bg-slate-950/60 border-l-2 border-cyan-400 rounded-r-xl border-y border-r border-slate-900">
+                                  <p class="text-lg font-serif text-right text-slate-200 mb-2 leading-loose" dir="rtl">إِنَّمَا بُعِثْتُ لِأُتَمِّمَ صَالِحَ الْأَخْلَاقِ</p>
+                                  <p class="text-[11px] text-slate-400 italic">"Sesungguhnya aku diutus hanya untuk menyempurnakan kesalehan akhlak."</p>
+                                  <p class="text-[10px] text-cyan-400 font-medium mt-1">HR. Ahmad (No. 8952)</p>
+                              </div>
+
+                              <h3 class="text-sm font-semibold text-cyan-400 mb-2">2. Krisis Identitas dan Restorasi Akhlak di Era Global</h3>
+                              <p class="text-slate-300 mb-4 text-xs leading-relaxed text-justify">Arus globalisasi dan penetrasi budaya digital membawa tantangan degradasi moral berupa individualisme ekstrem dan hilangnya sensitivitas sosial. Solusi yang ditawarkan Islam adalah restorasi karakter melalui keteladanan aktif (uswah hasanah), internalisasi nilai-nilai ketuhanan dalam kehidupan profesi, serta pembangunan komunitas sipil yang saling mengingatkan dalam kebenaran dan kesabaran.</p>`
+                    }
+                ]
+            },
+            {
+                namaModul: "Hukum & Keadilan Antar Manusia",
+                topik: [
+                    {
+                        id: "m4-t1",
+                        judul: "Antropologi Hukum Islam: Melawan Penindasan & Kezaliman Sistemik",
+                        isi: `<h3 class="text-sm font-semibold text-cyan-400 mb-2">1. Definisi dan Tipologi Kezaliman Struktural</h3>
+                              <p class="text-slate-300 mb-4 text-xs leading-relaxed text-justify">Secara leksikal, zalim bermakna menempatkan sesuatu di luar posisi proporsionalnya (wadh'u syai'in fi ghayri mahallihi). Hukum Islam membagi kezaliman menjadi tiga bagian utama yaitu kezaliman teologis terhadap pencipta (syirik), kezaliman psikologis terhadap diri sendiri (melakukan maksiat yang merusak organ biologis dan mental), serta kezaliman sosiologis-struktural terhadap sesama manusia (korupsi, represi politik, monopoli ekonomi, dan pencemaran ekosistem lingkungan hidup).</p>
+                              
+                              <div class="my-5 p-4 bg-slate-950/60 border-l-2 border-cyan-400 rounded-r-xl border-y border-r border-slate-900">
+                                  <p class="text-lg font-serif text-right text-slate-200 mb-2 leading-loose" dir="rtl">اتَّقُوا الظُّلْمَ فَإِنَّ الظُّلْمَ ظُلُمَاتٌ يَوْمَ الْقِيَامَةِ</p>
+                                  <p class="text-[11px] text-slate-400 italic">"Takutlah kalian akan kezaliman, karena kezaliman adalah kegelapan di hari kiamat."</p>
+                                  <p class="text-[10px] text-cyan-400 font-medium mt-1">HR. Muslim (No. 2578)</p>
+                              </div>
+
+                              <h3 class="text-sm font-semibold text-cyan-400 mb-2">2. Penegakan Keadilan sebagai Esensi Syariat</h3>
+                              <p class="text-slate-300 mb-4 text-xs leading-relaxed text-justify">Tujuan tertinggi syariat Islam (maqasid asy-syari'ah) tidak akan pernah tercapai tanpa adanya pilar keadilan sosial. Perlindungan terhadap lima hak universal manusia yaitu hak beragama (hifzh ad-din), hak hidup (hifzh an-nafs), hak berpikir (hifzh al-'aql), hak reproduksi/kehormatan (hifzh an-nasl), dan hak kepemilikan aset (hifzh al-mal). Semua ini adalah harga mati yang wajib diperjuangkan oleh kaum intelektual muslim dari segala bentuk kezaliman modern.</p>`
+                    }
+                ]
+            },
+            {
+                namaModul: "Retorika & Komunikasi Efektif",
+                topik: [
+                    {
+                        id: "m5-t1",
+                        judul: "Etika Komunikasi Publik dan Manajemen Retorika Lisan",
+                        isi: `<h3 class="text-sm font-semibold text-cyan-400 mb-2">1. Linguistik Profetik: Konsep Qaulan Sadida dan Qaulan Baligha</h3>
+                              <p class="text-slate-300 mb-4 text-xs leading-relaxed text-justify">Bahasa adalah cerminan akal dan jiwa. Islam merumuskan etika komunikasi berbasis teks Al-Qur'an melalui prinsip komunikasi profetik. Beberapa di antaranya meliputi Qaulan Sadida yaitu perkataan yang valid, berbasis data, jujur, dan tidak manipulatif serta Qaulan Baligha yaitu komunikasi efektif, tepat sasaran, menyentuh lubuk hati, dan kontekstual sesuai tingkat intelektual audiens. Lisan dipandang sebagai senjata bermata dua, lisan mampu menyatukan umat melalui dakwah yang sejuk, namun juga mampu menyulut konflik horizontal seketika melalui hoaks dan ujaran kebencian.</p>
+                              
+                              <div class="my-5 p-4 bg-slate-950/60 border-l-2 border-cyan-400 rounded-r-xl border-y border-r border-slate-900">
+                                  <p class="text-lg font-serif text-right text-slate-200 mb-2 leading-loose" dir="rtl">مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ</p>
+                                  <p class="text-[11px] text-slate-400 italic">"Barangsiapa yang beriman kepada Allah dan hari akhir, maka hendaklah dia berkata baik atau diam."</p>
+                                  <p class="text-[10px] text-cyan-400 font-medium mt-1">HR. Bukhari (No. 6018) & Muslim (No. 47)</p>
+                              </div>
+
+                              <h3 class="text-sm font-semibold text-cyan-400 mb-2">2. Etika Bermedia Sosial di Abad Informasi</h3>
+                              <p class="text-slate-300 mb-4 text-xs leading-relaxed text-justify">Di tengah banjir informasi digital saat ini, prinsip Tabayyun (pemeriksaan atas kebenaran sebuah informasi) menjadi pilar keselamatan sosial. Seorang mahasiswa wajib menguasai bagaimanana penyaringan informasi sebelum membagikannya (filter before share), menjauhi ghibah digital (membicarakan aib orang lain di ruang siber), serta menghindari adu domba (namimah) demi menjaga keutuhan ukhuwah islamiyah dan wathaniyah.</p>`
+                    }
+                ]
+            },
+            {
+                namaModul: "Struktur Sosio-Kultural & Adab",
+                topik: [
+                    {
+                        id: "m6-t1",
+                        judul: "Harmonisasi Antargenerasi dan Adab terhadap Otoritas Keilmuan",
+                        isi: `<h3 class="text-sm font-semibold text-cyan-400 mb-2">1. Dialektika Adab Intergenerasi</h3>
+                              <p class="text-slate-300 mb-4 text-xs leading-relaxed text-justify">Masyarakat ideal dalam pandangan Islam tersusun atas struktur hubungan sosial yang sehat, harmonis, dan saling menghormati antargenerasi. Generasi muda menghormati akumulasi kearifan, pengalaman hidup, dan pengorbanan generasi tua. Sebaliknya, generasi tua mengayomi, membimbing, dan memaklumi dinamika proses belajar generasi muda tanpa sikap merendahkan. Hubungan ini membentuk jalinan sosial yang kokoh dari risiko benturan budaya (culture shock).</p>
+                              
+                              <div class="my-5 p-4 bg-slate-950/60 border-l-2 border-cyan-400 rounded-r-xl border-y border-r border-slate-900">
+                                  <p class="text-lg font-serif text-right text-slate-200 mb-2 leading-loose" dir="rtl">لَيْسَ مِنَّا مَنْ لَمْ يَرْحَمْ صَغِيرَنَا وَيَعْرِفْ شَرَفَ كَبِيرَنَا</p>
+                                  <p class="text-[11px] text-slate-400 italic">"Bukan termasuk golongan kami orang yang tidak menyayangi yang muda di antara kami dan tidak mengetahui kemuliaan yang tua di antara kami."</p>
+                                  <p class="text-[10px] text-cyan-400 font-medium mt-1">HR. Tirmidzi (No. 1920)</p>
+                              </div>
+
+                              <h3 class="text-sm font-semibold text-cyan-400 mb-2">2. Adab Sebelum Ilmu: Syarat Mutlak Keberkahan Akademis</h3>
+                              <p class="text-slate-300 mb-4 text-xs leading-relaxed text-justify">Para ulama terdahulu sepakat menegaskan bahwa penataan adab harus didahulukan sebelum penguasaan materi ilmiah (al-adab qabla al-'ilm). Ilmu tanpa adab melahirkan arogansi intelektual yang berbahaya, contohnya seperti seorang terpelajar yang justru menggunakan kecerdasannya untuk menipu masyarakat awam. Sikap takzim kepada dosen, guru, orang tua, dan para pendahulu merupakan kunci spiritual utama yang membuka pintu pemahaman batin yang mendalam.</p>`
+                    }
+                ]
+            },
+            {
+                namaModul: "Konsistensi Ritme Spiritual",
+                topik: [
+                    {
+                        id: "m7-t1",
+                        judul: "Psikologi Istiqamah: Mengelola Efek Futur dan Konsistensi Amal",
+                        isi: `<h3 class="text-sm font-semibold text-cyan-400 mb-2">1. Anatomi Fluktuasi Iman dan Sindrom Futur</h3>
+                              <p class="text-slate-300 mb-4 text-xs leading-relaxed text-justify">Dalam dinamika psikologi spiritual Islam, kondisi keimanan dan motivasi manusia bersifat fluktuatif yakni bisa bertambah ataupun berkurang (al-imanu yazidu wa yankush). Titik rendah penurunan motivasi belajar atau beribadah dikenal dengan istilah futur. Jika tidak dikelola lewat disiplin ketat, kondisi futur dapat menyeret individu ke dalam kepasifan total atau bahkan depresi mental. Metode terbaik untuk mengurangi risiko ini adalah membangun ritme kebaikan yang berkesinambungan melalui pembiasaan skala kecil namun teratur.</p>
+                              
+                              <div class="my-5 p-4 bg-slate-950/60 border-l-2 border-cyan-400 rounded-r-xl border-y border-r border-slate-900">
+                                  <p class="text-lg font-serif text-right text-slate-200 mb-2 leading-loose" dir="rtl">أَحَبُّ الأَعْمَالِ إِلَى اللَّهِ أَدْوَمُهَا وَإِنْ قَلَّ</p>
+                                  <p class="text-[11px] text-slate-400 italic">"Amalan yang paling dicintai oleh Allah adalah yang paling kontinu (ajek) meskipun sedikit."</p>
+                                  <p class="text-[10px] text-cyan-400 font-medium mt-1">HR. Bukhari (No. 5861) & Muslim (No. 782)</p>
+                              </div>
+
+                              <h3 class="text-sm font-semibold text-cyan-400 mb-2">2. Desain Manajemen Kebiasaan Islami (Islamic Habit Loop)</h3>
+                              <p class="text-slate-300 mb-4 text-xs leading-relaxed text-justify">Prinsip berkesinambungan yang sejalan dengan teori psikologi perilaku modern (Atomic Habits). Lompatan target pengerjaan amal yang terlalu besar dan mendadak tanpa persiapan matang justru sering memicu kejenuhan psikologis dini. Islam mendidik umatnya untuk mengutamakan konsistensi yaitu membaca dua halaman buku atau Al-Qur'an secara disiplin setiap hari jauh lebih produktif dan membentuk karakter mental yang kokoh dibandingkan membaca langsung seratus halaman namun kemudian berhenti selama berbulan-bulan.</p>`
+                    }
+                ]
+            },
+            {
+                namaModul: "Moderasi & Fleksibilitas Syariat",
+                topik: [
+                    {
+                        id: "m8-t1",
+                        judul: "Falsafah Kemudahan Syariat dan Rekonstruksi Moderasi Beragama",
+                        isi: `<h3 class="text-sm font-semibold text-cyan-400 mb-2">1. Asas Taysir dan Karakter Adaptif Hukum Islam</h3>
+                              <p class="text-slate-300 mb-4 text-xs leading-relaxed text-justify">Syariat Islam diturunkan bukan untuk menahan kemerdekaan manusia atau mempersulit hidupnya, melainkan untuk mewujudkan maslahat (kemudahan). Terdapat kaidah fikih yang berbunyi "Al-Masyaqqatu tajlibut taysir" yang artinya kesulitan mendatangkan kemudahan. Fleksibilitas ini terlihat dalam konsep rukhshah (keringanan resmi), seperti dispensasi tidak berpuasa bagi musafir atau dibolehkannya tayamum saat kekurangan air bersih untuk sterilisasi. Hal ini membuktikan sifat agama Islam yang universal, adaptif, dan kontekstual di setiap ruang dan waktu.</p>
+                              
+                              <div class="my-5 p-4 bg-slate-950/60 border-l-2 border-cyan-400 rounded-r-xl border-y border-r border-slate-900">
+                                  <p class="text-lg font-serif text-right text-slate-200 mb-2 leading-loose" dir="rtl">إِنَّ الدِّينَ يُسْرٌ ، وَلَنْ يُشَادَّ الدِّينَ أَحَدٌ إِلاَّ غَلَبَهُ</p>
+                                  <p class="text-[11px] text-slate-400 italic">"Sesungguhnya agama itu mudah. Dan tidaklah seseorang mempersulit agama melainkan agama itu akan mengalahkannya."</p>
+                                  <p class="text-[10px] text-cyan-400 font-medium mt-1">HR. Bukhari (No. 39)</p>
+                              </div>
+
+                              <h3 class="text-sm font-semibold text-cyan-400 mb-2">2. Menolak Ekstremisme (Ghuluw) Menuju Ummatan Wasathan</h3>
+                              <p class="text-slate-300 mb-4 text-xs leading-relaxed text-justify">Sikap ekstrem, kaku, dan mempersulit diri (ghuluw) dilarang keras karena bertentangan dengan fitrah penciptaan manusia. Seseorang yang menuntut ilmu berkewajiban melaksanakan konsep Ummatan Wasathan yaitu umat pertengahan/moderat. Konsep ini menjauhkan diri dari sikap liberal radikal (yang meremehkan ketetapan syariat) sekaligus dari sikap tekstualis ekstrem (yang mudah mengkafirkan sesama tanpa dasar ilmu). Moderasi beragama adalah kunci utama dalam merawat keberagaman global demi mewujudkan kedamaian dunia.</p>`
+                    }
+                ]
+            }
+        ];
+
+        let topikSelesai = new Set();
+        let totalTopik = 0;
+        let topikAktifId = null;
+
+        modulBelajar.forEach(m => totalTopik += m.topik.length);
+        document.getElementById('progress-text').innerText = `0 dari ${totalTopik} materi selesai`;
+
+        const sidebar = document.getElementById('sidebar-modul');
+        
+        modulBelajar.forEach((modul) => {
+            const containerBab = document.createElement('div');
+            containerBab.className = "mb-2 border-b border-slate-900/40 pb-2";
+            
+            const judulBab = document.createElement('h3');
+            judulBab.className = "text-[11px] font-semibold text-slate-400 tracking-wide mb-1.5 px-2 mt-3 leading-tight";
+            judulBab.innerText = modul.namaModul;
+            containerBab.appendChild(judulBab);
+
+            modul.topik.forEach((tpk) => {
+                const linkTopik = document.createElement('button');
+                linkTopik.id = `btn-nav-${tpk.id}`;
+                linkTopik.className = "w-full text-left px-3 py-2 rounded-xl text-xs text-slate-400 hover:text-white hover:bg-slate-900/50 transition mb-1 flex justify-between items-center border border-transparent";
+                linkTopik.innerHTML = `<span class="pr-2 truncate">${tpk.judul}</span> <span id="status-${tpk.id}" class="text-[10px] text-slate-600 font-medium shrink-0">Belum dibaca</span>`;
+                
+                linkTopik.onclick = () => tampilkanKonten(tpk, linkTopik);
+                containerBab.appendChild(linkTopik);
+            });
+
+            sidebar.appendChild(containerBab);
+        });
+
+        function tampilkanKonten(topikObject, elemenAktif) {
+            topikAktifId = topikObject.id;
+
+            document.querySelectorAll('#sidebar-modul button').forEach(b => {
+                b.classList.remove('bg-slate-900', 'text-white', 'font-medium', 'border-slate-800');
+                b.classList.add('text-slate-400');
+            });
+
+            elemenAktif.classList.remove('text-slate-400');
+            elemenAktif.classList.add('bg-slate-900', 'text-white', 'font-medium', 'border-slate-800');
+
+            const areaKonten = document.getElementById('konten-materi');
+            areaKonten.innerHTML = `
+                <h1 class="text-base font-bold text-white mb-4 pb-2 border-b border-slate-900">${topikObject.judul}</h1>
+                <div class="space-y-4">
+                    ${topikObject.isi}
+                </div>
+            `;
+
+            document.getElementById('action-area').classList.remove('hidden');
+
+            const btnSelesai = document.getElementById('btn-selesai');
+            if(topikSelesai.has(topikAktifId)) {
+                btnSelesai.innerText = `Sudah Selesai Dibaca ✓`;
+                btnSelesai.className = "bg-slate-900 text-slate-500 text-xs font-medium px-4 py-2 rounded-lg cursor-not-allowed border border-slate-800";
+                btnSelesai.disabled = true;
+            } else {
+                btnSelesai.innerText = `Selesai Membaca Topik Ini`;
+                btnSelesai.className = "bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-medium px-4 py-2 rounded-lg shadow-sm transition-all";
+                btnSelesai.disabled = false;
+            }
+        }
+
+        document.getElementById('btn-selesai').onclick = () => {
+            if (topikAktifId && !topikSelesai.has(topikAktifId)) {
+                topikSelesai.add(topikAktifId);
+                
+                const labelStatus = document.getElementById(`status-${topikAktifId}`);
+                labelStatus.innerText = "Selesai ✓";
+                labelStatus.className = "text-[10px] text-cyan-400 font-medium";
+
+                const persen = Math.round((topikSelesai.size / totalTopik) * 100);
+                
+                document.getElementById('progress-bar').style.width = `${persen}%`;
+                document.getElementById('progress-text').innerText = `${topikSelesai.size} dari ${totalTopik} materi selesai`;
+                document.getElementById('progress-percent').innerText = `${persen}%`;
+
+                const btnSelesai = document.getElementById('btn-selesai');
+                btnSelesai.innerText = `Sudah Selesai Dibaca ✓`;
+                btnSelesai.className = "bg-slate-900 text-slate-500 text-xs font-medium px-4 py-2 rounded-lg cursor-not-allowed border border-slate-800";
+                btnSelesai.disabled = true;
+            }
+        };
+    </script>
